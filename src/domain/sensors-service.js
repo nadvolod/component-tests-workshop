@@ -20,6 +20,7 @@ class SensorsEventService {
         notificationCategory = 'default';
       }
 
+      // a 3rd party integration service
       try {
         await axios.post(
           `http://localhost/notification/${notificationCategory}`,

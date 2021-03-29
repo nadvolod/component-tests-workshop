@@ -47,15 +47,19 @@ describe('Sensors test', () => {
       color: 'Green',
       weight: 80,
       status: 'active',
+      category: undefined
       // 💡 TIP: Consider explicitly specify that category is undefined by assigning 'undefined'
     };
 
     // Act
     // 💡 TIP: use any http client lib like Axios OR supertest
     // 💡 TIP: This is how it is done with Supertest -> await request(expressApp).post("/sensor-events").send(eventToAdd);
-
+    const receivedResult = await request(expressApp).post("/sensor-events").send(eventToAdd);
     // Assert
     // 💡 TIP: verify that status is 400
+    expect(receivedResult).toMatchObject({
+      status: 400
+    })
   });
 
   // ✅ TASK: Test that when a new valid event is posted to /sensor-events route, we get back a valid response
